@@ -1,0 +1,409 @@
+@import url('https://fonts.googleapis.com/css2?family=MonteCarlo&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+  min-width: 0;
+  font: inherit;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: #fad7df;
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.container-letter {
+  position: relative;
+  animation: floating 3s ease-in-out infinite;
+  filter: drop-shadow(0px 10px 15px rgba(0, 0, 0, 0.3));
+  max-width: 400px;
+  width: 100%;
+  background-color: #E86A87;
+}
+
+/* Carta */
+.cover {
+  position: absolute;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-top: 100px solid #fe3334;
+  border-bottom: 100px solid transparent;
+  transition: transform 0.75s;
+  transform-origin: top;
+}
+
+.paper {
+  position: absolute;
+  padding: 1.5rem;
+  line-height: 2rem;
+  right: 5px;
+  z-index: -1;
+  background: #f3d8b2;
+  width: 390px;
+  height: 180px;
+  transition: all 0.75s;
+  font-family: "MonteCarlo", cursive;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.letter {
+  border-left: 200px solid #ff989e;
+  border-right: 200px solid #ff989e;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid #ff858a;
+}
+
+.letter {
+  border-left: 150px solid #E86A87;
+  border-right: 150px solid #E86A87;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid #e86180;
+}
+
+
+.options {
+  display: flex;
+  gap: 5rem;
+  margin-top: 20px;
+  flex-direction: column;
+}
+
+.options button {
+  color: #ff3234;
+  font-weight: 600;
+  border-radius: 3px;
+  background: #fad7df;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fe3334;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.options button:hover {
+  background: #ff989e;
+  color: white;
+}
+
+
+.open-cover {
+  transform: rotateX(180deg);
+}
+
+.open-paper {
+  animation: openPaper 0.5s forwards;
+}
+
+@keyframes openPaper {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -120px;
+    height: 175px;
+  }
+}
+
+.close-paper {
+  animation: closePaper 0.5s forwards;
+}
+
+@keyframes closePaper {
+  0% {
+    top: -120px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+
+.heart {
+  display: none;
+  position: absolute;
+  top: 25%;
+  left: 46.5%;
+  font-size: 3rem;
+  color: #fe3334;
+  animation: crecer 1s forwards;
+}
+
+@keyframes crecer {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  100% {
+    scale: 3;
+    opacity: 0;
+  }
+}
+
+
+.hearts-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Corazones animados */
+.heart-particle {
+  position: absolute;
+  color: #ff4a6e;
+  font-size: 1.5rem;
+  opacity: 0;
+  animation: floatHearts 5s linear infinite;
+}
+
+
+@keyframes floatHearts {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Pantalla emergente */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: rgba(250, 153, 153, 0.788);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 300px;
+}
+
+.popup-content h2 {
+  margin-bottom: 1rem;
+  color: #fcf9f9;
+  font-family: "MonteCarlo", cursive;
+  font-size: 1.6rem;
+}
+
+.popup-options {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.popup-options button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+#accept {
+  background: #E86A87;
+  color: white;
+}
+
+#accept:hover {
+  background: #45a049;
+}
+
+#deny {
+  background: #E86A87;
+  color: white;
+  position: relative;
+}
+
+#deny:hover {
+  background: #d32f2f;
+}
+
+.large-paper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 87%;
+  height: 80%;
+  background-color: #f3d8b2;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  overflow-y: auto; 
+}
+
+.large-paper form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.large-paper h1 {
+  font-family: "MonteCarlo", cursive;
+  color: #de4848;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  text-shadow: 
+    -0.5px -0.5px 0 #000,  
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;
+}
+
+.large-paper p {
+  font-family: "Montserrat", sans-serif;
+}
+
+.large-paper h2 {
+  font-family: "MonteCarlo", cursive;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+
+.large-paper form label {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.large-paper form input[type="text"] {
+  width: 80%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.large-paper form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #E86A87;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Ajustes para pantallas pequeñas (teléfonos) */
+main {
+  gap: 2rem;
+  padding: 0 10px;
+}
+
+.container-letter {
+  max-width: 300px;
+  background-color: #E86A87;
+}
+
+.cover {
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-top: 75px solid #df3e64;
+  border-bottom: 75px solid transparent;
+}
+
+.paper {
+  padding: 1rem;
+  line-height: 1.5rem;
+  width: 290px;
+  height: 128px;
+  font-family: "MonteCarlo", cursive;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.letter {
+  border-left: 150px solid #E86A87;
+  border-right: 150px solid #E86A87;
+  border-top: 75px solid transparent;
+  border-bottom: 75px solid #e86180;
+}
+
+.heart {
+  font-size: 2rem;
+  left: 45%;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.options button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Con amor para Fernanda Perera</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "vUn7q5sBYTJIr1M3B",
+        });
+    })();
+  </script>
+</head>
+<body>
+  <main>
+    <!-- Contenedor de corazones flotantes -->
+    <div class="hearts-container"></div>
+
+    <div class="container-letter">
+      <div class="cover"></div>
+      <span class="heart">♥</span>
+      <p class="paper" id="mainMessage">
+        <b>Hola corazón, para poder sacar la carta del sobre debes presionar la hoja.....</b>
+        ♥
+      </p>
+      <div class="letter"></div>
+    </div>
+    <div class="options">
+      <button id="open">Abrir</button>
+      <button id="close">Cerrar</button>
+    </div>
+  </main>
+
+  <!-- Pantalla emergente -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <h2>Te ha llegado una carta. ¿Desea recibirla?</h2>
+      <div class="popup-options">
+        <button id="accept">Sí</button>
+        <button id="deny">No</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
